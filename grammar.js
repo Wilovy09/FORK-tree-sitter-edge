@@ -16,8 +16,7 @@ module.exports = grammar({
     triple_brace: ($) =>
       seq(token("{{{"), alias(balanced_brace, $.raw_expresion), token("}}}")),
 
-    comment: ($) =>
-      token(choice(seq("{{--", /[\s\S]*?/, "--}}"), seq("{{--", /.*/, "--}}"))),
+    comment: ($) => token(/{{--[\s\S]*?--}}/),
 
     function: ($) =>
       seq(
